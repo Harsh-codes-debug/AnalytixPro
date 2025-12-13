@@ -1,0 +1,120 @@
+# AnalytixPro - Dependencies Guide
+
+## 🚀 Quick Installation (One Command)
+
+### Using pip (recommended):
+```bash
+pip install streamlit pandas numpy matplotlib seaborn scipy speechrecognition pyttsx3 reportlab weasyprint openpyxl
+```
+
+### Using uv (faster alternative):
+```bash
+uv add streamlit pandas numpy matplotlib seaborn scipy speechrecognition pyttsx3 reportlab weasyprint openpyxl
+```
+
+## 📦 Package Categories
+
+### Core Web Framework
+- **streamlit>=1.47.1** - Web application framework with chat interface support
+
+### Data Processing & Analysis
+- **pandas>=2.3.1** - Data manipulation and analysis
+- **numpy>=2.3.2** - Numerical computing and array operations
+- **scipy>=1.16.1** - Scientific computing and advanced statistics
+
+### Data Visualization
+- **matplotlib>=3.10.5** - Static plotting and chart generation
+- **seaborn>=0.13.2** - Statistical data visualization with enhanced aesthetics
+
+### Export & Reporting
+- **reportlab>=4.4.3** - Primary PDF report generation
+- **weasyprint>=66.0** - Alternative PDF generation (fallback)
+- **openpyxl>=3.1.5** - Excel file operations, multi-sheet exports, and XLSX file reading
+
+### Voice Processing (Optional)
+- **speechrecognition>=3.14.3** - Speech-to-text conversion
+- **pyttsx3>=2.99** - Text-to-speech engine
+
+## 🏃 Running the Application
+
+### Standard Run:
+```bash
+streamlit run app.py --server.port 5000
+```
+
+### With Custom Configuration:
+```bash
+streamlit run app.py --server.port 5000 --server.address 0.0.0.0 --server.headless true
+```
+
+### For Development:
+```bash
+streamlit run app.py --server.port 5000 --server.runOnSave true
+```
+
+## 🔍 Troubleshooting Installation
+
+### Voice Libraries (speechrecognition, pyttsx3):
+```bash
+# If audio libraries fail, install system dependencies first:
+
+# Ubuntu/Debian:
+sudo apt-get install portaudio19-dev python3-pyaudio
+
+# macOS with Homebrew:
+brew install portaudio
+
+# Then retry pip install
+pip install speechrecognition pyttsx3
+```
+
+### PDF Generation (weasyprint):
+```bash
+# If weasyprint fails, install system dependencies:
+
+# Ubuntu/Debian:
+sudo apt-get install python3-dev python3-pip python3-cffi python3-brotli libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0
+
+# macOS:
+brew install pango libffi
+```
+
+### Alternative Installation Without Optional Packages:
+```bash
+# Minimum installation (without voice and advanced PDF):
+pip install streamlit pandas numpy matplotlib seaborn scipy openpyxl reportlab
+```
+
+## ✅ Verification Steps
+
+### Test Installation:
+```python
+# Test core packages
+python -c "import streamlit, pandas, numpy, matplotlib, seaborn, scipy; print('✅ Core packages OK')"
+
+# Test export features
+python -c "import reportlab, openpyxl; print('✅ Export features available')"
+
+# Test voice features (optional)
+python -c "import speech_recognition, pyttsx3; print('✅ Voice features available')"
+```
+
+### Test Application:
+```bash
+# Start the app
+streamlit run app.py --server.port 5000
+
+# Check in browser: http://localhost:5000
+# Try loading demo dataset
+# Explore EDA, queries, and exports
+```
+
+## 🚨 Notes
+
+- Large datasets (>100MB) may require more memory
+- Voice features work best in local environments
+- Cloud deployments may have limited audio support
+
+---
+
+**Need help?** Check the complete setup guide in `SETUP.md` or open an issue on the repository.
